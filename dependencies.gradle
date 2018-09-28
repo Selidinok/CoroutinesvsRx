@@ -1,0 +1,66 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    //Android
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+
+    //Libraries
+    kotlin = "1.2.71"
+    koin = "1.0.1"
+    timber = "4.7.1"
+    retrofit = "2.4.0"
+    okhttp3 = "3.11.0"
+    moshi = "1.7.0"
+    corutines = "0.26.1"
+    mapStruct = "1.2.0.Final"
+    room = "1.1.1"
+
+
+    coreDependencies = [
+            kotlin                      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
+            koin                        : "org.koin:koin-core:$koin",
+            koinExtended                : "org.koin:koin-core-ext:$koin",
+            koinAndroidCore             : "org.koin:koin-android:$koin",
+            koinAndroidScope            : "org.koin:koin-android-scope:$koin",
+            koinAndroidViewModel        : "org.koin:koin-android-viewmodel:$koin",
+            timber                      : "com.jakewharton.timber:timber:$timber",
+            retrofit                    : "com.squareup.retrofit2:retrofit:$retrofit",
+            retrofitMoshiConventer      : "com.squareup.retrofit2:converter-moshi:$retrofit",
+            okhttp3Logging              : "com.squareup.okhttp3:logging-interceptor:$okhttp3",
+            okhttp3                     : "com.squareup.okhttp3:okhttp:$okhttp3",
+            moshi                       : "com.squareup.moshi:moshi:$moshi",
+            corutines                   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$corutines",
+            mapStruct                   : "org.mapstruct:mapstruct-jdk8:$mapStruct",
+            mapStructKapt               : "org.mapstruct:mapstruct-processor:$mapStruct",
+            room                        : "android.arch.persistence.room:runtime:$room",
+            roomKapt                    : "android.arch.persistence.room:compiler:$room"
+    ]
+
+
+    domainDependencies = [
+            kotlin                      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
+            koin                        : "org.koin:koin-core:$koin",
+            koinExtended                : "org.koin:koin-core-ext:$koin",
+            koinAndroidCore             : "org.koin:koin-android:$koin",
+            koinAndroidScope            : "org.koin:koin-android-scope:$koin",
+            koinAndroidViewModel        : "org.koin:koin-android-viewmodel:$koin",
+            timber                      : "com.jakewharton.timber:timber:$timber",
+            retrofit                    : "com.squareup.retrofit2:retrofit:$retrofit",
+            retrofitMoshiConventer      : "com.squareup.retrofit2:converter-moshi:$retrofit",
+            okhttp3Logging              : "com.squareup.okhttp3:logging-interceptor:$okhttp3",
+            okhttp3                     : "com.squareup.okhttp3:okhttp:$okhttp3",
+            moshi                       : "com.squareup.moshi:moshi:$moshi",
+            corutines                   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$corutines",
+            mapStruct                   : "org.mapstruct:mapstruct-jdk8:$mapStruct",
+            mapStructKapt               : "org.mapstruct:mapstruct-processor:$mapStruct",
+            room                        : "android.arch.persistence.room:runtime:$room",
+            roomKapt                    : "android.arch.persistence.room:compiler:$room"
+    ]
+
+}

@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def coreDependencies = rootProject.ext.coreDependencies
+
+    implementation coreDependencies.kotlin
+
+    //DI
+    implementation coreDependencies.koin
+    implementation coreDependencies.koinExtended
+    implementation coreDependencies.koinAndroidCore
+
+    //Logging
+    implementation coreDependencies.timber
+
+    //Remote
+    implementation coreDependencies.retrofit
+    implementation coreDependencies.retrofitMoshiConventer
+    implementation coreDependencies.okhttp3
+    implementation coreDependencies.okhttp3Logging
+
+    //Mapping
+    implementation coreDependencies.mapStruct
+    kapt coreDependencies.mapStructKapt
+
+    //DB
+    implementation coreDependencies.room
+    kapt coreDependencies.roomKapt
+}

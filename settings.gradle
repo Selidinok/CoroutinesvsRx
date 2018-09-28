@@ -1,1 +1,1 @@
-include ':app', ':rxjava'
+include ':mobile-ui', ':domain', ':core'
