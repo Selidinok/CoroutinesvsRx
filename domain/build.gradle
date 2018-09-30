@@ -30,29 +30,32 @@ dependencies {
 
     implementation project(":core")
 
-    implementation coreDependencies.kotlin
+    implementation domainDependencies.kotlin
 
     //DI
-    implementation coreDependencies.koin
-    implementation coreDependencies.koinExtended
-    implementation coreDependencies.koinAndroidCore
+    implementation domainDependencies.koin
+    implementation domainDependencies.koinExtended
+    implementation domainDependencies.koinAndroidCore
 
     //Logging
-    implementation coreDependencies.timber
+    implementation domainDependencies.timber
 
     //Remote
-    implementation coreDependencies.retrofit
-    implementation coreDependencies.retrofitMoshiConventer
-    implementation coreDependencies.okhttp3
-    implementation coreDependencies.okhttp3Logging
+    implementation domainDependencies.retrofit
+    implementation domainDependencies.retrofitMoshiConventer
+    implementation domainDependencies.okhttp3
+    implementation domainDependencies.okhttp3Logging
 
     //Mapping
-    implementation coreDependencies.mapStruct
-    kapt coreDependencies.mapStructKapt
+    implementation domainDependencies.mapStruct
+    kapt domainDependencies.mapStructKapt
 
     //DB
-    implementation coreDependencies.room
-    kapt coreDependencies.roomKapt
+    implementation domainDependencies.room
+    kapt domainDependencies.roomKapt
+
+    //LiveData
+    implementation domianDependecies.liveData
 }
 repositories {
     mavenCentral()

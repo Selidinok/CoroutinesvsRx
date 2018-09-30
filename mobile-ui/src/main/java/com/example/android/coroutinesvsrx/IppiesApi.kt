@@ -1,7 +1,7 @@
 package com.example.android.coroutinesvsrx
 
-import com.cashback.data.entitys.DealResponse
-import com.cashback.data.entitys.MerchantResponse
+import com.domain.data.entitys.DealResponse
+import com.domain.data.entitys.MerchantResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

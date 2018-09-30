@@ -1,15 +1,15 @@
 package com.example.android.coroutinesvsrx.presenter
 
-import com.cashback.core.result.Result
+import com.domain.core.result.Result
 import com.example.android.coroutinesvsrx.SearchActivity
-import com.cashback.core.result.Failure
+import com.domain.core.result.Failure
 import com.example.android.coroutinesvsrx.interactors.SearchUseCase
 import kotlinx.coroutines.experimental.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.experimental.channels.consumeEach
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
-import com.cashback.data.entitys.Deal
-import com.cashback.data.entitys.Merchant
+import com.domain.data.entitys.Deal
+import com.domain.data.entitys.Merchant
 
 /**
  * Created by User on 18:33 30.06.2018.

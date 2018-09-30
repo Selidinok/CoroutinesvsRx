@@ -1,18 +1,11 @@
 package com.example.android.coroutinesvsrx.interactors
 
-import com.cashback.core.base.SingleUseCase
-import com.cashback.core.result.Result
-import com.cashback.core.result.Failure
+import com.domain.core.base.SingleUseCase
+import com.domain.core.result.Result
 import com.example.android.coroutinesvsrx.repository.SearchRepository
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.launch
-import com.cashback.data.entitys.Deal
-import com.cashback.data.entitys.Merchant
-import kotlinx.coroutines.experimental.CompletionHandler
-import kotlinx.coroutines.experimental.CompletionHandlerException
-import java.nio.channels.CompletionHandler
+import com.domain.data.entitys.Deal
+import com.domain.data.entitys.Merchant
 
 /**
  * Created by User on 18:39 30.06.2018.

@@ -1,7 +1,7 @@
 package com.example.android.coroutinesvsrx.interactors
 
-import com.cashback.core.base.SingleUseCase
-import com.cashback.data.entitys.Merchant
+import com.domain.core.base.SingleUseCase
+import com.domain.data.entitys.Merchant
 import com.example.android.coroutinesvsrx.repository.SearchRepository
 
 class GetMerchantsUseCase : SingleUseCase<List<Merchant>, GetMerchantsUseCase.Params>() {

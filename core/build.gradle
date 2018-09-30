@@ -51,4 +51,7 @@ dependencies {
     //DB
     implementation coreDependencies.room
     kapt coreDependencies.roomKapt
+
+    //Lifecycle
+    implementation coreDependencies.liveData
 }

@@ -1,6 +1,6 @@
 package com.example.android.coroutinesvsrx
 
-import com.cashback.data.entitys.Repository
+import com.domain.data.entitys.Repository
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.GET

@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.app.Activity
 import android.text.Editable
 import android.text.TextWatcher
-import com.cashback.core.result.Failure
+import com.domain.core.result.Failure
 
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.coroutines.experimental.channels.ConflatedBroadcastChannel
-import com.cashback.data.entitys.Deal
-import com.cashback.data.entitys.Merchant
+import com.domain.data.entitys.Deal
+import com.domain.data.entitys.Merchant
 import com.example.android.coroutinesvsrx.presenter.SearchPresenter
 
 class SearchActivity : Activity() {
