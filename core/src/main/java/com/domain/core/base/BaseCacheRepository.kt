@@ -1,7 +1,5 @@
 package com.domain.core.base
 
-import com.domain.core.cash.CacheEntity
-import com.domain.core.cash.CashDao
 import com.domain.core.constants.AppConstants.CASH_EXPIRATION_TIME
 
 /**

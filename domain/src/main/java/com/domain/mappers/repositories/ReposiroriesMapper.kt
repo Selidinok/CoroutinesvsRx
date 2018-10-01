@@ -1,9 +1,7 @@
 package com.domain.mappers.repositories
 
 import com.domain.core.base.BaseMapper
-import com.domain.entities.cash.RepositoryEntity
-import com.domain.entities.domain.Repository
-import com.domain.entities.remote.RepositoryResponse
+import com.domain.entities.Repository
 import org.mapstruct.Mapper
 
 /**

@@ -26,11 +26,13 @@ android {
 }
 
 dependencies {
-    def domianDependecies = rootProject.ext.domainDependencies
 
     implementation project(":core")
+    implementation project(":cache")
+    implementation project(":remote")
 
     implementation domainDependencies.kotlin
+    implementation domainDependencies.corutines
 
     //DI
     implementation domainDependencies.koin
@@ -55,7 +57,10 @@ dependencies {
     kapt domainDependencies.roomKapt
 
     //LiveData
-    implementation domianDependecies.liveData
+    implementation domainDependencies.liveData
+
+    //WorkManager
+    implementation coreDependencies.workManager
 }
 repositories {
     mavenCentral()

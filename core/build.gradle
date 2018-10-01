@@ -26,9 +26,8 @@ android {
 }
 
 dependencies {
-    def coreDependencies = rootProject.ext.coreDependencies
-
     implementation coreDependencies.kotlin
+    implementation coreDependencies.corutines
 
     //DI
     implementation coreDependencies.koin
@@ -54,4 +53,6 @@ dependencies {
 
     //Lifecycle
     implementation coreDependencies.liveData
+
+    implementation coreDependencies.workManager
 }

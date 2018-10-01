@@ -1,41 +1,55 @@
 package com.domain.repository.repositories
 
 import android.arch.lifecycle.LiveData
-import com.domain.cache.RepositoriesCache
+import android.net.NetworkInfo
 import com.domain.core.base.BaseDataRepository
 import com.domain.core.result.Result
-import com.domain.entities.cash.RepositoryEntity
-import com.domain.entities.domain.Repository
-import com.domain.entities.remote.RepositoryResponse
+import com.domain.entities.Repository
 import com.domain.mappers.repositories.ReposiroriesMapper
-import com.domain.remote.repositories.RepositoriesRemote
+import com.example.android.cache.RepositoriesCache
+import com.example.android.remote.repositories.RepositoriesRemote
+import timber.log.Timber
 
 class RepositoriesRepository(
     private val repositoriesDatabase: RepositoriesCache,
     private val repositoriesRemote: RepositoriesRemote,
-    private val mapper: ReposiroriesMapper
-) : BaseDataRepository<Repository, RepositoryEntity, RepositoryResponse>(
-    repositoriesDatabase,
-    repositoriesRemote,
-    mapper
-) {
+    private val mapper: ReposiroriesMapper,
+    private val networkInfo: NetworkInfo
+) : BaseDataRepository() {
 
-    fun getReposirtories(update: Boolean) : LiveData<List<Repository>> {
-        if (update) {
-            val remoteResult = getRepositoriesFromRemote()
-            if (remoteResult.isSuccess) {
-                val remote = (remoteResult as Result.Success).b
-                repositoriesDatabase.saveRepositories(
-                    remoteResult.b.map { mapper.fromRemoteToCache(it) }
-                )
+    fun getReposirtories(refresh: Boolean): LiveData<List<Repository>> {
+        if (refresh) {
+            when(networkInfo.isConnected) {
+                true -> asyncLaunch { getNewRepositoriesWithSave() }
+                false ->
             }
         }
+
         return transformLiveData(getRepositoriesFromCache()) {
             it.map { mapper.fromCache(it) }
         }
     }
 
+    /**
+     * Get List<RepositoryResponse> and save it to database
+     */
+    suspend fun getNewRepositoriesWithSave() {
+        val remoteResult = getRepositoriesFromRemote()
+        when (remoteResult) {
+            is Result.Success -> repositoriesDatabase.saveRepositories(
+                remoteResult.result.map { mapper.fromRemoteToCache(it) }
+            )
+            is Result.Error -> Timber.e(remoteResult.failure.message)
+        }
+    }
+
+    /**
+     * return List<RepositoryResponse> without saving it to database
+     */
+    fun getNewRepositories() = asyncLaunchWithReturn { getRepositoriesFromRemote() }
+
     fun getRepositoriesFromCache() = repositoriesDatabase.getRepositories()
 
-    fun getRepositoriesFromRemote() = repositoriesRemote.getRepositories()
+    suspend fun getRepositoriesFromRemote() = repositoriesRemote.getRepositories()
+
 }

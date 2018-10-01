@@ -1,15 +1,13 @@
 package com.domain.core.result
 
-import java.lang.Exception
-
 /**
  * Created by User on 18:49 30.06.2018.
 
  */
 sealed class Result<out R> {
-    data class Error(val a: Failure) : Result<Nothing>()
+    data class Error(val failure: Failure) : Result<Nothing>()
 
-    data class Success<out R>(val b: R) : Result<R>()
+    data class Success<out R>(val result: R) : Result<R>()
 
     val isSuccess get() = this is Success<R>
     val isError get() = this is Error
@@ -20,8 +18,8 @@ sealed class Result<out R> {
 
     fun either(onError: (Failure) -> Any, onResult: (R) -> Any): Any =
             when (this) {
-                is Error -> onError(a)
-                is Success -> onResult(b)
+                is Error -> onError(failure)
+                is Success -> onResult(result)
             }
 
     object Complete

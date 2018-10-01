@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * You may obtain failure copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -15,15 +15,14 @@
  */
 package com.domain.core.base
 
-import com.domain.core.flags.Mapper
 import com.domain.core.result.Result
 
 /**
- * Abstract class for a Use Case (Interactor in terms of Clean Architecture).
+ * Abstract class for failure Use Case (Interactor in terms of Clean Architecture).
  * This abstraction represents an execution unit for different use cases (this means than any use
  * case in the application should implement this contract).
  *
- * By convention each [SingleUseCase] implementation will execute its job in a background thread
+ * By convention each [SingleUseCase] implementation will execute its job in failure background thread
  * (kotlin coroutine) and will post the result in the UI thread.
  */
 abstract class SingleUseCase<out Type, in Params> where Type : Any {
@@ -33,9 +32,9 @@ abstract class SingleUseCase<out Type, in Params> where Type : Any {
     suspend operator fun invoke(params: Params, onResult: (Result<Type>) -> Unit = {}) {
 
 //    onResult(run(params))
-        val job = async { run(params) }
-        lanch { onResult(job.await()) }
-}
+//        val job = async { run(params) }
+//        lanch { onResult(job.await()) }
+    }
 
-class None
+    class None
 }
