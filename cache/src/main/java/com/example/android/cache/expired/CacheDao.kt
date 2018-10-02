@@ -1,4 +1,4 @@
-package com.example.android.cache.expired_cache
+package com.example.android.cache.expired
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Query

@@ -28,9 +28,4 @@ abstract class BaseDataRepository {
             newData.value = mapper(it)
             return@switchMap newData
         }
-
-    fun <T> waitForReconnect(block: () -> Unit) {
-        val work = OneTimeWorkRequestBuilder<>()
-    }
-
 }

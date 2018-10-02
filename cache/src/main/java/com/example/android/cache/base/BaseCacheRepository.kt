@@ -1,13 +1,15 @@
-package com.domain.core.base
+package com.example.android.cache.base
 
 import com.domain.core.constants.AppConstants.CASH_EXPIRATION_TIME
+import com.example.android.cache.expired.CacheDao
+import com.example.android.cache.expired.CacheEntity
 
 /**
  * Created by User on 22:18 29.09.2018.
 
  */
 abstract class BaseCacheRepository(
-    private val cashDao: CashDao
+    private val cacheDao: CacheDao
 ) {
 
     abstract fun getEntityName(): String
@@ -16,7 +18,7 @@ abstract class BaseCacheRepository(
      * Return true if last update was later than CASH_EXPIRATION_TIME
      */
     fun isExpired(): Boolean {
-        val cash = cashDao.getCash(getEntityName())
+        val cash = cacheDao.getCash(getEntityName())
         return if (cash == null) {
             true
         } else {
@@ -33,7 +35,7 @@ abstract class BaseCacheRepository(
 
     fun updateCash() {
         val cache = CacheEntity(0, getEntityName(), createExpirationTime())
-        cashDao.insert(cache)
+        cacheDao.insert(cache)
     }
 
 
