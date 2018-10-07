@@ -1,12 +1,13 @@
 package com.example.android.remote.data
 
 import com.example.android.remote.entity.RepositoryResponse
-import retrofit2.Call
+import kotlinx.coroutines.experimental.Deferred
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 
 interface RepositoriesApi {
 
     @GET("/repositories")
-    fun getRepositories(): Call<List<RepositoryResponse>>
+    fun getRepositories(@Query("since") since: Int): Deferred<List<RepositoryResponse>>
 }

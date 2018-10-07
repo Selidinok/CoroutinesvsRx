@@ -22,18 +22,15 @@ import com.domain.core.result.Result
  * This abstraction represents an execution unit for different use cases (this means than any use
  * case in the application should implement this contract).
  *
- * By convention each [SingleUseCase] implementation will execute its job in failure background thread
+ * By convention each [SuspendUseCase] implementation will execute its job in failure background thread
  * (kotlin coroutine) and will post the result in the UI thread.
  */
-abstract class SingleUseCase<out Type, in Params> where Type : Any {
+abstract class SuspendUseCase<out Type, in Params> where Type : Any {
 
-    abstract suspend fun run(params: Params): Result<Type>
+    suspend abstract fun run(params: Params): Result<Type>
 
     suspend operator fun invoke(params: Params, onResult: (Result<Type>) -> Unit = {}) {
-
-//    onResult(run(params))
-//        val job = async { run(params) }
-//        lanch { onResult(job.await()) }
+        onResult(run(params))
     }
 
     class None

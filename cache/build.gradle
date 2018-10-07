@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -33,8 +34,10 @@ dependencies {
 
     //DB
     implementation coreDependencies.room
-    kapt coreDependencies.roomKapt
+    kapt kaptDependencies.roomKapt
 
     //Lifecycle
-    implementation coreDependencies.liveData
+    implementation coreDependencies.lifecycleExtensions
+
+    implementation coreDependencies.timber
 }

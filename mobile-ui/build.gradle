@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -22,6 +23,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    dataBinding {
+        enabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
 }
 
 dependencies {
@@ -29,18 +43,33 @@ dependencies {
     implementation project(":core")
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.4'
-    implementation 'ru.gildor.coroutines:kotlin-coroutines-retrofit:0.11.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.4'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation "com.squareup.retrofit2:converter-gson:2.4.0"
-    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
+    implementation coreDependencies.kotlin
+    implementation coreDependencies.corutines
+
+    //Android
+    implementation coreDependencies.supportDesign
+    implementation coreDependencies.supportAppcompat
+    implementation coreDependencies.constraintLayout
+    implementation coreDependencies.recyclerView
+
+    //Navigation
+    implementation coreDependencies.navigationFragment
+    implementation coreDependencies.navigationUI
+
+    //Logging
+    implementation coreDependencies.timber
+
+    //Lifecycle
+    implementation coreDependencies.liveData
+    kapt kaptDependencies.lifecycleCompiler
+
+    //Koin
+    implementation coreDependencies.koin
+    implementation coreDependencies.koinAndroidScope
+    implementation coreDependencies.koinAndroidViewModel
 }

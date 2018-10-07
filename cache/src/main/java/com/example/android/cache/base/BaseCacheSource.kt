@@ -1,13 +1,15 @@
-package com.domain.core.base
+package com.example.android.cache.base
 
 import com.domain.core.constants.AppConstants.CASH_EXPIRATION_TIME
+import com.example.android.cache.expired_cache.CacheEntity
+import timber.log.Timber
 
 /**
  * Created by User on 22:18 29.09.2018.
 
  */
-abstract class BaseCacheRepository(
-    private val cashDao: CashDao
+abstract class BaseCacheSource(
+    private val cashDao: CacheDao
 ) {
 
     abstract fun getEntityName(): String
@@ -27,12 +29,14 @@ abstract class BaseCacheRepository(
     }
 
     protected fun <T> operationWithCache(entity: T, operation: (T) -> Unit) {
+        Timber.d("Start save")
         updateCash()
         operation(entity)
     }
 
     fun updateCash() {
         val cache = CacheEntity(0, getEntityName(), createExpirationTime())
+        Timber.d("Start update cache")
         cashDao.insert(cache)
     }
 

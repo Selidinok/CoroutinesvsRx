@@ -14,5 +14,6 @@ class RemoteRequestWorker(val context: Context, val workerParameters: WorkerPara
 
 
     override fun doWork(): Result {
+        return Result.FAILURE
     }
 }

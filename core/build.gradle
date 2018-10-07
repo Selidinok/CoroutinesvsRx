@@ -1,11 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 
 android {
     compileSdkVersion 28
-
-
 
     defaultConfig {
         minSdkVersion 19
@@ -14,7 +13,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -40,16 +38,18 @@ dependencies {
     //Remote
     implementation coreDependencies.retrofit
     implementation coreDependencies.retrofitMoshiConventer
+    implementation coreDependencies.retrofitGsonConventer
+    implementation coreDependencies.retrofitCoroutinAdapter
     implementation coreDependencies.okhttp3
     implementation coreDependencies.okhttp3Logging
 
     //Mapping
     implementation coreDependencies.mapStruct
-    kapt coreDependencies.mapStructKapt
+    kapt kaptDependencies.mapStructKapt
 
     //DB
     implementation coreDependencies.room
-    kapt coreDependencies.roomKapt
+    kapt kaptDependencies.roomKapt
 
     //Lifecycle
     implementation coreDependencies.liveData

@@ -1,11 +1,7 @@
 package com.example.android.coroutinesvsrx.interactors
 
-import com.domain.core.base.SingleUseCase
-import com.domain.data.entitys.Merchant
-import com.example.android.coroutinesvsrx.repository.SearchRepository
 
-class GetMerchantsUseCase : SingleUseCase<List<Merchant>, GetMerchantsUseCase.Params>() {
-    override suspend fun run(params: Params) = SearchRepository().getMerchants(params.text)
+class GetMerchantsUseCase{
 
     data class Params(val text: String)
 }

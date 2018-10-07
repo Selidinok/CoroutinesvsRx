@@ -1,19 +1,16 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
-
-
 
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -31,33 +28,36 @@ dependencies {
     implementation project(":cache")
     implementation project(":remote")
 
-    implementation domainDependencies.kotlin
-    implementation domainDependencies.corutines
+    implementation coreDependencies.kotlin
+    implementation coreDependencies.corutines
 
     //DI
-    implementation domainDependencies.koin
-    implementation domainDependencies.koinExtended
-    implementation domainDependencies.koinAndroidCore
+    implementation coreDependencies.koin
+    implementation coreDependencies.koinExtended
+    implementation coreDependencies.koinAndroidCore
 
     //Logging
-    implementation domainDependencies.timber
+    implementation coreDependencies.timber
 
     //Remote
-    implementation domainDependencies.retrofit
-    implementation domainDependencies.retrofitMoshiConventer
-    implementation domainDependencies.okhttp3
-    implementation domainDependencies.okhttp3Logging
+    implementation coreDependencies.retrofit
+    implementation coreDependencies.retrofitMoshiConventer
+    implementation coreDependencies.okhttp3
+    implementation coreDependencies.okhttp3Logging
+    implementation coreDependencies.retrofitCoroutinAdapter
+    implementation coreDependencies.retrofitGsonConventer
+    kapt kaptDependencies.moshiKapt
 
     //Mapping
-    implementation domainDependencies.mapStruct
-    kapt domainDependencies.mapStructKapt
+    implementation coreDependencies.mapStruct
+    kapt kaptDependencies.mapStructKapt
 
     //DB
-    implementation domainDependencies.room
-    kapt domainDependencies.roomKapt
+    implementation coreDependencies.room
+    kapt kaptDependencies.roomKapt
 
     //LiveData
-    implementation domainDependencies.liveData
+    implementation coreDependencies.liveData
 
     //WorkManager
     implementation coreDependencies.workManager

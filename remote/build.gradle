@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -27,6 +28,7 @@ android {
 dependencies {
     implementation project(":core")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation coreDependencies.kotlin
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
@@ -34,11 +36,16 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //Logging
-    implementation domainDependencies.timber
+    implementation coreDependencies.timber
 
     //Remote
-    implementation domainDependencies.retrofit
-    implementation domainDependencies.retrofitMoshiConventer
-    implementation domainDependencies.okhttp3
-    implementation domainDependencies.okhttp3Logging
+    implementation coreDependencies.retrofit
+    implementation coreDependencies.retrofitMoshiConventer
+    implementation coreDependencies.retrofitGsonConventer
+    implementation coreDependencies.okhttp3
+    implementation coreDependencies.okhttp3Logging
+    implementation coreDependencies.retrofitCoroutinAdapter
+}
+repositories {
+    mavenCentral()
 }

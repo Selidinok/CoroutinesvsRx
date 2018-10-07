@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.coroutinesvsrx.ui.MainActivity">
+    <item
+        android:id="@+id/repositoriesFragment"
+        android:title="Repositories" />
+    <item
+        android:id="@+id/searchFragment"
+        android:title="Search" />
+</menu>

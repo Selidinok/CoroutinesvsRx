@@ -6,10 +6,10 @@ package com.domain.core.base
  */
 interface BaseMapper<D, C, R> {
     fun fromRemote(response: R): D
-    fun toRemote(domain: D): R
+//    fun toRemote(domain: D): R
 
     fun fromCache(cache: C): D
-    fun toCache(domain: D): C
+//    fun toCache(domain: D): C
 
-    fun fromRemoteToCache(remote: R): C
+    fun fromRemoteToCache(response: R): C
 }

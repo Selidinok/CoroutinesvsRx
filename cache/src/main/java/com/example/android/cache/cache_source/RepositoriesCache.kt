@@ -1,16 +1,16 @@
-package com.example.android.cache
+package com.example.android.cache.cache_source
 
 import android.arch.lifecycle.LiveData
-import com.domain.core.base.BaseCacheRepository
+import com.example.android.cache.base.BaseCacheSource
+import com.example.android.cache.base.CacheDao
 import com.example.android.cache.db.RepositoryDao
 import com.example.android.cache.entity.RepositoryEntity
-import com.example.android.cache.expired_cache.CacheDao
 
 
 class RepositoriesCache(
     private val repositoryDao: RepositoryDao,
     cashDao: CacheDao
-) : BaseCacheRepository(cashDao) {
+) : BaseCacheSource(cashDao) {
 
     override fun getEntityName() = RepositoryEntity::class.java.simpleName
 

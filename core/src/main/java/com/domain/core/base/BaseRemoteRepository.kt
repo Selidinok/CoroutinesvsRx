@@ -1,6 +1,5 @@
 package com.domain.core.base
 
-import com.domain.core.result.Failure
 import com.domain.core.result.Result
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,18 +45,18 @@ abstract class BaseRemoteRepository {
                         if (body != null) {
                             Result.Success(body)
                         } else {
-                            Result.Error(Failure.EmptyError())
+                            Result.Failure.EmptyError()
                         }
                     }
                     false -> {
                         Timber.e(response.errorBody().toString())
-                        Result.Error(Failure.ServerError(response.errorBody().toString()))
+                        Result.Failure.ServerError(response.errorBody().toString())
                     }
                 }
             }
 
             override fun onFailure(call: Call<R>, t: Throwable) {
-                Result.Error(Failure.ServerError(t.message))
+                Result.Failure.ServerError(t.message)
             }
         })
     }

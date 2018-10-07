@@ -15,6 +15,7 @@ ext {
     koin = "1.0.1"
     timber = "4.7.1"
     retrofit = "2.4.0"
+    retrofitCoroutinAdapter = "1.0.0"
     okhttp3 = "3.11.0"
     moshi = "1.7.0"
     corutines = "0.26.1"
@@ -22,50 +23,48 @@ ext {
     room = "1.1.1"
     lifecycle = "1.1.1"
     workManager = "1.0.0-alpha09"
+    navigation = "1.0.0-alpha06"
+    androidSupport = "28.0.0"
+    constraintLayout = "1.1.3"
+    gson = "2.4.0"
 
 
     coreDependencies = [
-            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
-            koin                    : "org.koin:koin-core:$koin",
-            koinExtended            : "org.koin:koin-core-ext:$koin",
-            koinAndroidCore         : "org.koin:koin-android:$koin",
-            koinAndroidScope        : "org.koin:koin-android-scope:$koin",
-            koinAndroidViewModel    : "org.koin:koin-android-viewmodel:$koin",
-            timber                  : "com.jakewharton.timber:timber:$timber",
-            retrofit                : "com.squareup.retrofit2:retrofit:$retrofit",
-            retrofitMoshiConventer  : "com.squareup.retrofit2:converter-moshi:$retrofit",
-            okhttp3Logging          : "com.squareup.okhttp3:logging-interceptor:$okhttp3",
-            okhttp3                 : "com.squareup.okhttp3:okhttp:$okhttp3",
-            moshi                   : "com.squareup.moshi:moshi:$moshi",
-            corutines               : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$corutines",
-            mapStruct               : "org.mapstruct:mapstruct-jdk8:$mapStruct",
-            mapStructKapt           : "org.mapstruct:mapstruct-processor:$mapStruct",
-            room                    : "android.arch.persistence.room:runtime:$room",
-            roomKapt                : "android.arch.persistence.room:compiler:$room",
-            liveData                : "android.arch.lifecycle:livedata:$lifecycle",
-            workManager             : "android.arch.work:work-runtime-ktx:$workManager"
+            kotlin                 : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
+            koin                   : "org.koin:koin-core:$koin",
+            koinExtended           : "org.koin:koin-core-ext:$koin",
+            koinAndroidCore        : "org.koin:koin-android:$koin",
+            koinAndroidScope       : "org.koin:koin-android-scope:$koin",
+            koinAndroidViewModel   : "org.koin:koin-android-viewmodel:$koin",
+            timber                 : "com.jakewharton.timber:timber:$timber",
+            retrofit               : "com.squareup.retrofit2:retrofit:$retrofit",
+            retrofitMoshiConventer : "com.squareup.retrofit2:converter-moshi:$retrofit",
+            retrofitGsonConventer  : "com.squareup.retrofit2:converter-gson:$gson",
+            retrofitCoroutinAdapter: "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$retrofitCoroutinAdapter",
+            okhttp3Logging         : "com.squareup.okhttp3:logging-interceptor:$okhttp3",
+            okhttp3                : "com.squareup.okhttp3:okhttp:$okhttp3",
+            moshi                  : "com.squareup.moshi:moshi:$moshi",
+            corutines              : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$corutines",
+            corutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$corutines",
+            mapStruct              : "org.mapstruct:mapstruct-jdk8:$mapStruct",
+            room                   : "android.arch.persistence.room:runtime:$room",
+            lifecycleExtensions    : "android.arch.lifecycle:extensions:$lifecycle",
+            liveData               : "android.arch.lifecycle:livedata:$lifecycle",
+            workManager            : "android.arch.work:work-runtime-ktx:$workManager",
+            navigationFragment     : "android.arch.navigation:navigation-fragment-ktx:$navigation",
+            navigationUI           : "android.arch.navigation:navigation-ui-ktx:$navigation",
+            supportDesign          : "com.android.support:design:$androidSupport",
+            supportAppcompat       : "com.android.support:appcompat-v7:$androidSupport",
+            recyclerView           : "com.android.support:recyclerview-v7:$androidSupport",
+            constraintLayout       : "com.android.support.constraint:constraint-layout:$constraintLayout",
     ]
 
-
-    domainDependencies = [
-            kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
-            koin                  : "org.koin:koin-core:$koin",
-            koinExtended          : "org.koin:koin-core-ext:$koin",
-            koinAndroidCore       : "org.koin:koin-android:$koin",
-            koinAndroidScope      : "org.koin:koin-android-scope:$koin",
-            koinAndroidViewModel  : "org.koin:koin-android-viewmodel:$koin",
-            timber                : "com.jakewharton.timber:timber:$timber",
-            retrofit              : "com.squareup.retrofit2:retrofit:$retrofit",
-            retrofitMoshiConventer: "com.squareup.retrofit2:converter-moshi:$retrofit",
-            okhttp3Logging        : "com.squareup.okhttp3:logging-interceptor:$okhttp3",
-            okhttp3               : "com.squareup.okhttp3:okhttp:$okhttp3",
-            moshi                 : "com.squareup.moshi:moshi:$moshi",
-            corutines             : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$corutines",
-            mapStruct             : "org.mapstruct:mapstruct-jdk8:$mapStruct",
-            mapStructKapt         : "org.mapstruct:mapstruct-processor:$mapStruct",
-            room                  : "android.arch.persistence.room:runtime:$room",
-            roomKapt              : "android.arch.persistence.room:compiler:$room",
-            liveData              : "android.arch.lifecycle:livedata:$lifecycle"
+    kaptDependencies = [
+            lifecycleCompiler: "android.arch.lifecycle:compiler:$lifecycle",
+            roomKapt         : "android.arch.persistence.room:compiler:$room",
+            mapStructKapt    : "org.mapstruct:mapstruct-processor:$mapStruct",
+            moshiKapt        : "com.squareup.moshi:moshi-kotlin-codegen:$moshi"
     ]
+
 
 }

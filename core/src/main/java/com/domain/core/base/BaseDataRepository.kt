@@ -1,9 +1,7 @@
 package com.domain.core.base
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
-import androidx.work.OneTimeWorkRequestBuilder
 import kotlinx.coroutines.experimental.*
 import timber.log.Timber
 
@@ -23,14 +21,12 @@ abstract class BaseDataRepository {
 
 
     fun <T, R> transformLiveData(obj: LiveData<T>, mapper: (T) -> R): LiveData<R> =
-        Transformations.switchMap(obj) {
-            val newData = MutableLiveData<R>()
-            newData.value = mapper(it)
-            return@switchMap newData
+        Transformations.map(obj) {
+            mapper(it)
         }
 
     fun <T> waitForReconnect(block: () -> Unit) {
-        val work = OneTimeWorkRequestBuilder<>()
+//        val work = OneTimeWorkRequestBuilder<>()
     }
 
 }

@@ -7,5 +7,5 @@ class RepositoriesRemote(
     private val api: RepositoriesApi
 ) : BaseRemoteRepository() {
 
-    suspend fun getRepositories() = api.getRepositories().await()
+    suspend fun getRepositories(since: Int) = api.getRepositories(since)
 }
