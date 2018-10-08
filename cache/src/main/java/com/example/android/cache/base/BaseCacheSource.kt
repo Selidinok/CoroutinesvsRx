@@ -1,7 +1,7 @@
 package com.example.android.cache.base
 
 import com.domain.core.constants.AppConstants.CASH_EXPIRATION_TIME
-import com.example.android.cache.expired_cache.CacheEntity
+import com.example.android.cache.expired.CacheEntity
 import timber.log.Timber
 
 /**
@@ -35,9 +35,9 @@ abstract class BaseCacheSource(
     }
 
     fun updateCash() {
-        val cache = CacheEntity(0, getEntityName(), createExpirationTime())
-        Timber.d("Start update cache")
-        cashDao.insert(cache)
+        val cache = CacheEntity(getEntityName(), createExpirationTime())
+        val id = cashDao.insert(cache)
+        Timber.d("Start update cache $id")
     }
 
 

@@ -9,8 +9,7 @@ import android.arch.persistence.room.PrimaryKey
  */
 @Entity
 data class CacheEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    @PrimaryKey
     val tableName: String,
     val expirationTime: Long
 )

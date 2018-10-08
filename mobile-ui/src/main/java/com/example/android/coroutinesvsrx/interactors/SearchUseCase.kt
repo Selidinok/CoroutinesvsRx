@@ -29,7 +29,7 @@ class SearchUseCase{
 //
 //        val pair = merchantsResults to dealResults
 //
-//        return Result.Success(pair)
+//        return State.Success(pair)
 //    }
 
 

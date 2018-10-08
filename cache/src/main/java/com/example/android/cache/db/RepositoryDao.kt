@@ -12,6 +12,6 @@ abstract class RepositoryDao : BaseDao<RepositoryEntity>() {
     @Query("SELECT * FROM RepositoryEntity")
     protected abstract fun getRawRepositories(): LiveData<List<RepositoryEntity>>
 
-    fun getRepositories() = getRawRepositories().getDistinct()
+    fun getRepositories() = getRawRepositories()
 
 }

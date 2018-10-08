@@ -29,7 +29,7 @@ class SearchPresenter(val view: SearchActivity, val boadcast: ConflatedBroadcast
 //        view.showProgress(false)
 //    }
 //
-//    private fun onResultSearch(pair: Pair<Result<Failure, List<Merchant>>, Result<Failure, List<Deal>>>) {
+//    private fun onResultSearch(pair: Pair<State<Failure, List<Merchant>>, State<Failure, List<Deal>>>) {
 //        val merchants = pair.first
 //        merchants.either({ view.showMerchantError(it) }, { view.showMerchants(it) })
 //

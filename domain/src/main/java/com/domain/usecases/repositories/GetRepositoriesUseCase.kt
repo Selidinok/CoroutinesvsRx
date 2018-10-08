@@ -1,8 +1,9 @@
 package com.domain.usecases.repositories
 
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import com.domain.core.base.SuspendUseCase
-import com.domain.core.result.Result
+import com.domain.core.result.State
 import com.domain.entities.Repository
 import com.domain.repository.repositories.RepositoriesRepository
 
@@ -13,5 +14,7 @@ import com.domain.repository.repositories.RepositoriesRepository
 class GetRepositoriesUseCase(
     val repositoriesRepository: RepositoriesRepository
 ) : SuspendUseCase<LiveData<List<Repository>>, Int>() {
-    override suspend fun run(params: Int): Result<LiveData<List<Repository>>> = repositoriesRepository.getReposirtories(params)
+    override suspend fun run(since: Int): LiveData<List<Repository>> =
+        repositoriesRepository.getRepositories(since)
+
 }

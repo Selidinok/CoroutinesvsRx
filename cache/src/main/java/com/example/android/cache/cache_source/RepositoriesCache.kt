@@ -5,6 +5,7 @@ import com.example.android.cache.base.BaseCacheSource
 import com.example.android.cache.base.CacheDao
 import com.example.android.cache.db.RepositoryDao
 import com.example.android.cache.entity.RepositoryEntity
+import timber.log.Timber
 
 
 class RepositoriesCache(
@@ -17,7 +18,8 @@ class RepositoriesCache(
     fun getRepositories(): LiveData<List<RepositoryEntity>> = repositoryDao.getRepositories()
 
     fun saveRepositories(repositories: List<RepositoryEntity>) = operationWithCache(repositories) {
-        repositoryDao.bulkInsert(*repositories.toTypedArray())
+        val ids = repositoryDao.bulkInsert(*repositories.toTypedArray())
+        Timber.d("$ids")
     }
 
 }

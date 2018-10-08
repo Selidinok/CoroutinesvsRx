@@ -12,6 +12,7 @@ ext {
 
     //Libraries
     kotlin = "1.2.71"
+    kotlinKtx = "1.0.0-alpha1"
     koin = "1.0.1"
     timber = "4.7.1"
     retrofit = "2.4.0"
@@ -31,6 +32,7 @@ ext {
 
     coreDependencies = [
             kotlin                 : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin",
+            kotlinKtx              : "androidx.core:core-ktx:$kotlinKtx",
             koin                   : "org.koin:koin-core:$koin",
             koinExtended           : "org.koin:koin-core-ext:$koin",
             koinAndroidCore        : "org.koin:koin-android:$koin",

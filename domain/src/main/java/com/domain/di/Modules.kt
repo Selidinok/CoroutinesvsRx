@@ -35,7 +35,7 @@ val cacheModule = module {
 val dataModule = module {
     single<ReposiroriesMapper>()
     single<OwnerMapper>()
-    single { RepositoriesRepository(get(), get(), get(), get()) }
+    single<RepositoriesRepository>()
 }
 
 val domainModule = module {

@@ -15,7 +15,7 @@
  */
 package com.domain.core.base
 
-import com.domain.core.result.Result
+import com.domain.core.result.State
 
 /**
  * Abstract class for failure Use Case (Interactor in terms of Clean Architecture).
@@ -27,9 +27,9 @@ import com.domain.core.result.Result
  */
 abstract class SuspendUseCase<out Type, in Params> where Type : Any {
 
-    suspend abstract fun run(params: Params): Result<Type>
+    suspend abstract fun run(params: Params): Type
 
-    suspend operator fun invoke(params: Params, onResult: (Result<Type>) -> Unit = {}) {
+    suspend operator fun invoke(params: Params, onResult: (Type) -> Unit = {}) {
         onResult(run(params))
     }
 

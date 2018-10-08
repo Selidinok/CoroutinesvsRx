@@ -12,10 +12,10 @@ import android.arch.persistence.room.*
 abstract class BaseDao<Entity> {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insert(obj: Entity)
+    abstract fun insert(obj: Entity): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun bulkInsert(vararg obj: Entity)
+    abstract fun bulkInsert(vararg obj: Entity): List<Long>
 
     @Update
     abstract fun update(obj: Entity)

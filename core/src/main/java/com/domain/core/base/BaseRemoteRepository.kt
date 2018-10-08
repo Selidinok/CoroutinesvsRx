@@ -1,6 +1,6 @@
 package com.domain.core.base
 
-import com.domain.core.result.Result
+import com.domain.core.result.State
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,51 +13,51 @@ import kotlin.coroutines.experimental.suspendCoroutine
  */
 abstract class BaseRemoteRepository {
 
-//    protected fun <R> request(call: Call<R>): Result<R> {
+//    protected fun <R> request(call: Call<R>): State<R> {
 //        return try {
 //            val response = call.execute()
 //            when (response.isSuccessful) {
 //                true -> {
 //                    val body = response.body()
 //                    if (body != null) {
-//                        Result.Success(body)
+//                        State.Success(body)
 //                    } else {
-//                        Result.Error(Failure.EmptyError())
+//                        State.Error(Failure.EmptyError())
 //                    }
 //                }
 //                false -> {
 //                    Timber.e(response.errorBody().toString())
-//                    Result.Error(Failure.ServerError(response.errorBody().toString()))
+//                    State.Error(Failure.ServerError(response.errorBody().toString()))
 //                }
 //            }
 //        } catch (exception: Throwable) {
 //            exception.printStackTrace()
-//            Result.Error(Failure.ServerError(exception.message))
+//            State.Error(Failure.ServerError(exception.message))
 //        }
 //    }
 
-    protected suspend fun <R> Call<R>.await(): Result<R> = suspendCoroutine {
-        this.enqueue(object : Callback<R> {
-            override fun onResponse(call: Call<R>, response: Response<R>) {
-                when (response.isSuccessful) {
-                    true -> {
-                        val body = response.body()
-                        if (body != null) {
-                            Result.Success(body)
-                        } else {
-                            Result.Failure.EmptyError()
-                        }
-                    }
-                    false -> {
-                        Timber.e(response.errorBody().toString())
-                        Result.Failure.ServerError(response.errorBody().toString())
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<R>, t: Throwable) {
-                Result.Failure.ServerError(t.message)
-            }
-        })
-    }
+//    protected suspend fun <R> Call<R>.await(): State<R> = suspendCoroutine {
+//        this.enqueue(object : Callback<R> {
+//            override fun onResponse(call: Call<R>, response: Response<R>) {
+//                when (response.isSuccessful) {
+//                    true -> {
+//                        val body = response.body()
+//                        if (body != null) {
+//                            State.Success(body)
+//                        } else {
+//                            State.Failure.EmptyError()
+//                        }
+//                    }
+//                    false -> {
+//                        Timber.e(response.errorBody().toString())
+//                        State.Failure.ServerError(response.errorBody().toString())
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<R>, t: Throwable) {
+//                State.Failure.ServerError(t.message)
+//            }
+//        })
+//    }
 }
