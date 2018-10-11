@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.domain.core.result.State
 import kotlinx.coroutines.experimental.*
+import timber.log.Timber
 import kotlin.coroutines.experimental.CoroutineContext
 
 /**
@@ -11,6 +12,7 @@ import kotlin.coroutines.experimental.CoroutineContext
 
  */
 abstract class BaseViewModel : ViewModel(), CoroutineScope {
+
     val state: MutableLiveData<State> = MutableLiveData()
     private val job = Job()
     private val errorHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -22,4 +24,10 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
 
     fun launchWithHandler(block: suspend CoroutineScope.() -> Unit) =
         launch(errorHandler) { block() }
+
+    override fun onCleared() {
+        super.onCleared()
+        Timber.e("ViewModel cancel")
+        job.cancel()
+    }
 }

@@ -14,6 +14,11 @@ sealed class State {
 }
 
 @BindingConversion
-fun stateToString(state: State?) =
-    if (state != null) state::class.simpleName ?: ""
-    else ""
+fun stateToString(state: State?): String = when (state) {
+    is State.Failure -> state.message ?: ""
+    is State.Success -> State.Success::class.java.simpleName
+    is State.Loading -> State.Loading::class.java.simpleName
+    is State.Empty -> State.Empty::class.java.simpleName
+    else -> ""
+}
+

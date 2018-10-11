@@ -1,7 +1,7 @@
 package com.example.android.coroutinesvsrx.di
 
 import com.example.android.coroutinesvsrx.viewmodels.repositories.RepositoriesViewModel
-import org.koin.android.viewmodel.ext.koin.viewModel
+import org.koin.android.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 
 /**
@@ -10,6 +10,5 @@ import org.koin.dsl.module.module
  */
 
 val uiModule = module {
-//    viewModel<RepositoriesViewModel>()
-    viewModel { RepositoriesViewModel(get()) }
+    viewModel<RepositoriesViewModel>()
 }

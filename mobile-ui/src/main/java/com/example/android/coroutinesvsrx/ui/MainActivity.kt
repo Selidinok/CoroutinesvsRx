@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.android.coroutinesvsrx.R
 import com.example.android.coroutinesvsrx.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,14 +32,16 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupActionBarWithNavController(this, navigationController, drawerLayout)
 
-        binding.navigationView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.repositoriesFragment -> navigationController.navigate(R.id.repositoriesFragment)
-                R.id.searchFragment -> navigationController.navigate(R.id.searchFragment)
-            }
-            drawerLayout.closeDrawer(GravityCompat.START)
-            return@setNavigationItemSelectedListener true
-        }
+        binding.navigationView.setupWithNavController(navigationController)
+
+//        binding.navigationView.setNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.repositoriesFragment -> navigationController.navigate(R.id.repositoriesFragment)
+//                R.id.searchFragment -> navigationController.navigate(R.id.searchFragment)
+//            }
+//            drawerLayout.closeDrawer(GravityCompat.START)
+//            return@setNavigationItemSelectedListener true
+//        }
     }
 
     override fun onNavigateUp(): Boolean {
